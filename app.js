@@ -81,7 +81,7 @@ app.post('/login', (req, res) => {
         else {
             bcrypt.compare(password, result.password).then((isMatch) => {
                 if (isMatch) {
-                    const token = jwt.sign({ _id: result._id }, JWT_SECRET, {
+                    const token = jwt.sign({ _id: result._id , username : result.username }, JWT_SECRET, {
                         expiresIn: '1h',
                     });
                     console.log(token);
