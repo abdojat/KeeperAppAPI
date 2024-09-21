@@ -87,14 +87,14 @@ passport.use(new GoogleStrategy({
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: "https://keeperapp-o7lz.onrender.com/" }),
+    passport.authenticate('google', { failureRedirect: "http://keeperapp-o7lz.onrender.com/" }),
     function (req, res) {
         const token = jwt.sign({ _id: req.user._id, username: req.user.username }, JWT_SECRET, {
             expiresIn: '10y',
         });
         // Send JWT token in response after successful login
         res.cookie('token', token, { httpOnly: false, secure: false });
-        res.redirect('https://keeperapp-o7lz.onrender.com/');
+        res.redirect("http://keeperapp-o7lz.onrender.com/");
     });
 
 app.post('/register', (req, res) => {
