@@ -31,10 +31,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-app.use(cors({
-    origin: 'https://keeperapp-o7lz.onrender.com/',
-    credentials: true
-}));
+app.use(cors());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
